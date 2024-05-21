@@ -1,0 +1,11 @@
+{
+  "name": "rubber_duck_store",
+  "version": "1.0.0",
+  "description": "A store to sell rubber ducks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex and Evan",
+  "license": "MIT"
+}
