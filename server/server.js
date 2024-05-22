@@ -2,19 +2,20 @@ import express from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import pg from 'pg';
+
 
 dotenv.config();
+const url = process.env.MONGO_DB_URL;
+const dbName = process.env.MONGO_DB;
+const collectionName = process.env.MONGO_DB_COLLECTION;
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 
-const url = process.env.MONGO_URL;
-const dbName = process.env.MONGO_DB_NAME;
-const collectionName = process.env.MONGO_COLLECTION_NAME;
+
 
 app.get('/ducks', async(req, res)=> {
     try{

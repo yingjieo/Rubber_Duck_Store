@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     const fetchData = async ()=> {
       try {
-        const response = await fetch(import.meta.env.VITE_DUCKS_API)
+        const response = await fetch(import.meta.env.DUCKS_API)
         if(!response.ok) {
           throw new Error('Data could not be fetched')
         }
@@ -23,7 +23,7 @@ function App() {
       }
     }
     fetchData()
-  })
+  },[])
   
   const handleDelete = async (duck_id) => {
      try{

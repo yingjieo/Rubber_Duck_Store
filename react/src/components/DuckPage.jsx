@@ -8,24 +8,24 @@ function DuckPage(props) {
     >
         <div className="card-body">
             <h5 className="card-title">Duck Details</h5>
-            <div className="card-text">Color: {props.data.duckDetails?.color}</div>
-            <div className="card-text">Size: {props.data.duckDetails?.size} </div>
-            <div className="card-text">Material: {props.data.duckDetails?.material} </div>
-            <div className="card-text">Animal: {props.data.duckDetails?.animal}</div>
-            <div className="card-text">Pattern: {props.data.duckDetails?.pattern}</div>
-            <div className="card-text">Theme: {props.data.duckDetails?.theme}</div>
+            <div className="card-text">Color: {props.data?.color}</div>
+            <div className="card-text">Size: {props.data?.size} </div>
+            <div className="card-text">Material: {props.data?.material} </div>
+            <div className="card-text">Animal: {props.data?.animal}</div>
+            <div className="card-text">Pattern: {props.data?.pattern}</div>
+            <div className="card-text">Theme: {props.data?.theme}</div>
         </div>
             <div className="card-body">
                 <h5 className="card-title">Additional information</h5>
                 <div className="card-text">
                 Durability(1 is fragile, 10 is strong):{" "}
-                {props.data.duckdetails ?.durability}
+                {props.data ?.durability}
                 </div>
                 <div className="card-text">
-                Popularity: {props.data.duckdetails ?.popularity}
+                Popularity: {props.data ?.popularity}
                 </div>
                 <div className="card-text">
-                Price: ${props.data.duckDetails ?.price}
+                Price: ${props.data ?.price}
                 </div>
             </div>
         <div className="card-text">
