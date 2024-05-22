@@ -1,5 +1,5 @@
 import express from 'express';
-// import {MongoClient, ObjectId} from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import pg from 'pg';
@@ -12,10 +12,22 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 
-// const url = process.env.MONGO_URL;
-// const dbName = process.env.MONGO_DB_NAME;
-// const collectionName = process.env.MONGO_COLLECTION_NAME;
+const url = process.env.MONGO_URL;
+const dbName = process.env.MONGO_DB_NAME;
+const collectionName = process.env.MONGO_COLLECTION_NAME;
 
+app.get('/ducks', async(req, res)=> {
+    try{
+        const client = await MongoClient.connect(url)
+        const db = client.db(dbName)
+        const collection = db.collection(collectionName)
+        const ducks = await collection.find({}).toArray()
+        res.json(ducks)
+    } catch (err) {
+        console.error("error", err)
+        res.status(500).send("Something squeaks")
+    }
+})
 app.post('/ducks/search', async (req, res) => {
     try {
         const client = new MongoClient(url);
