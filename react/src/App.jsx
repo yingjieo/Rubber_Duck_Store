@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import DuckPage from './components/DuckPage'
 import Cart from './components/Cart'
 import Checkout  from './components/Checkout'
-import Home from './components/Home'
 import TestPage from './components/TestPage'
+import Home from './components/Home'
 import {BrowserRouter as Router, Route, Routes, Link} from "react-router-dom"
 
-const apiUrl = import.meta.env.DUCKS_API || 'http://localhost:3001/ducks'
 function App() {
   const [data, setData] = useState([])
   useEffect(() => {
     const fetchData = async ()=> {
       try {
-        const response = await fetch(apiUrl)
-        console.log(apiUrl, "Api check")
+        const response = await fetch("http://localhost:3001/ducks")
         if(!response.ok) {
           throw new Error('Data could not be fetched')
         }
@@ -31,7 +29,7 @@ function App() {
   
   const handleDelete = async (duck_id) => {
      try{
-      const response = await fetch(`${import.meta.env.VITE_DUCK_API}/${duck_id}`, {
+      const response = await fetch(`http://localhost:3001/ducks/${duck_id}`, {
         method:'DELETE',
       })
       if(!response.ok) {
@@ -81,14 +79,14 @@ function App() {
           
             
               <Routes>
-                <Route exact path="/" element={<Home data={data} />} />
+                <Route exact path="/" element={<Home data ={data}/>} />
                 <Route exact path="Cart" element={<Cart data={data} handleDelete={handleDelete}/>}/>
                 <Route exact path="Checkout" element={
                 
                   <Checkout />
                 
                 }/>
-                <Route path="/test" element={<TestPage />} />
+                <Route path="/test" element={<TestPage data={data}/>} />
                 {/* <Route path="/Login" element={<LoginForm />} /> */}
               </Routes>
               
