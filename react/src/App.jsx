@@ -1,18 +1,21 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import DuckPage from './components/DuckPage'
 import Cart from './components/Cart'
 import Checkout  from './components/Checkout'
+import Home from './components/Home'
 import {BrowserRouter as Router, Route, Routes, Link} from "react-router-dom"
 
+const apiUrl = import.meta.env.DUCKS_API || 'http://localhost:3001/ducks'
 function App() {
   const [data, setData] = useState([])
   useEffect(() => {
     const fetchData = async ()=> {
       try {
-        const response = await fetch(import.meta.env.DUCKS_API)
+        const response = await fetch(apiUrl)
+        console.log(apiUrl, "Api check")
         if(!response.ok) {
           throw new Error('Data could not be fetched')
         }
@@ -77,7 +80,7 @@ function App() {
           
             
               <Routes>
-                <Route exact path="/" element={<DuckPage  />} />
+                <Route exact path="/" element={<Home data={data} />} />
                 <Route exact path="Cart" element={<Cart data={data} handleDelete={handleDelete}/>}/>
                 <Route exact path="Checkout" element={
                 
