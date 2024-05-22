@@ -16,7 +16,7 @@ deluxe_sizes = ['XSmall', 'XLarge', 'Jumbo']
 materials = ['Rubber', 'Plastic', 'Metal', 'Wood', 'Glass', 'Ceramic']
 animals = ['Duck', 'Mouse', 'Lion', 'Horse', 'Owl', 'Eagle', 'Giraffe', 'Cat', 'Dog']
 special_animals = ['Dinosaur', 'Phoenix', 'Dragon']
-patterns = ['None', 'Polka Dot', 'Striped', 'Glitter', 'Gradient', 'Checkered', 'Floral']
+patterns = ['Solid', 'Polka Dot', 'Striped', 'Glitter', 'Gradient', 'Checkered', 'Floral']
 themes = ['Pirate', 'Doctor', 'Wizard', 'Princess', 'Witch', 'Superhero']
 
 # function to calculate durability
@@ -57,7 +57,6 @@ def get_popularity(material, color, animal, theme):
     return base_score
 
 # function to calculate price
-# 2 to 40
 def get_price(material, color, animal, theme, size):
     price = 0
 
