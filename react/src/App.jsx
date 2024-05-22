@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import DuckPage from './components/DuckPage'
 import Cart from './components/Cart'
+import Checkout  from './components/Checkout'
+import {BrowserRouter as Router, Route, Routes, Link} from "react-router-dom"
 
 function App() {
   const [data, setData] = useState([])
@@ -21,7 +23,7 @@ function App() {
       }
     }
     fetchData()
-  }, [page])
+  })
   
   const handleDelete = async (duck_id) => {
      try{
@@ -64,10 +66,32 @@ function App() {
                 </Link>
               </li>
             </ul>
-            <Search setData={setData} />
+            {/* <Search setData={setData} /> */}
           </div>
         </div>
       </nav>
+      <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+
+        <div className="container-fluid">
+          <div className="row">
+          
+            
+              <Routes>
+                <Route exact path="/" element={<DuckPage  />} />
+                <Route exact path="Cart" element={<Cart data={data} handleDelete={handleDelete}/>}/>
+                <Route exact path="Checkout" element={
+                
+                  <Checkout />
+                
+                }/>
+                {/* <Route path="/Login" element={<LoginForm />} /> */}
+              </Routes>
+              
+              
+            
+          </div>
+        </div>
+        </main>
       </Router>
     </>
   )
