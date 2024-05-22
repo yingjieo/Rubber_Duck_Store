@@ -29,6 +29,20 @@ app.get('/ducks', async(req, res)=> {
         res.status(500).send("Something squeaks")
     }
 })
+
+app.get('/ducks/:id', async(req, res) => {
+    try{
+        const client = await MongoClient.connect(url)
+        const db = client.db(dbName)
+        const collection = db.collection(collectionName)
+        const duck = await collection.find({'duck_id': +req.params.id}).toArray()
+        res.json(duck[0])
+    } catch (err) {
+        console.error("error", err)
+        res.status(500).send("Something squeaks")
+    }
+})
+
 app.post('/ducks/search', async (req, res) => {
     try {
         const client = new MongoClient(url);
