@@ -2,8 +2,8 @@ from flask import Flask, request
 from flask_cors import CORS, cross_origin
 import pickle
 import pandas as pd
-# from pymongo import MongoClient
-# import os
+from pymongo import MongoClient
+import os
 
 K = 9
 app = Flask(__name__)
@@ -20,9 +20,10 @@ def predict():
     # Get the request data
     data = request.get_json(force=True)
 
-    # mongo = MongoClient()
-    # db = mongo['database_name']
-    # df = db
+    # mongo = MongoClient(os.environ['MONGO_DB_URL'])
+    # db = mongo[os.environ['MONGO_DB']]
+    # collection = db['MONGO_DB_COLLECTION'].find()
+    # df = pd.DataFrame(list(collection))
     df = pd.read_csv("../rubber_ducks.csv") # TODO: get from mongo
 
      # Ensure the data is a list (even if it's just one dictionary)
