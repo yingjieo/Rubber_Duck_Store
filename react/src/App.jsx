@@ -5,6 +5,7 @@ import './App.css'
 import DuckPage from './components/DuckPage'
 import Cart from './components/Cart'
 import Checkout  from './components/Checkout'
+import TestPage from './components/TestPage'
 import {BrowserRouter as Router, Route, Routes, Link} from "react-router-dom"
 
 function App() {
@@ -84,6 +85,7 @@ function App() {
                   <Checkout />
                 
                 }/>
+                <Route path="/test" element={<TestPage />} />
                 {/* <Route path="/Login" element={<LoginForm />} /> */}
               </Routes>
               
