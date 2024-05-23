@@ -44,10 +44,18 @@ app.get('/ducks/:id', async(req, res) => {
 
 app.post('/ducks/search', async (req, res) => {
     try {
-        const query = req.body;
-        const result = await collection.find(query).toArray();
-        res.json(result);
-        client.close();
+        const {searchTerm} = req.body;
+        console.log("searchTerm:", searchTerm);
+        const regex = new RegExp(searchTerm, 'i');
+
+        if (!searchTerm) { // handle empty search term
+            const result = await collection.find({}).toArray();
+            res.json(result);
+        }
+        else {
+            const result = await collection.find({"color" : regex}).toArray();
+            res.json(result);
+        }
     } catch (error) {
         console.log(error);
         res.status(500).json({message: 'Internal server error'});

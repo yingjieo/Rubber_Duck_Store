@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Cart from './components/Cart'
 import Checkout  from './components/Checkout'
@@ -8,11 +6,13 @@ import TestPage from './components/TestPage'
 import Home from './components/Home'
 import Duck from './components/Duck'
 import Login from './components/Login'
+import Search from './components/Search'
 import {BrowserRouter as Router, Route, Routes, Link} from "react-router-dom"
 
 function App() {
   const [data, setData] = useState([])
   const [cart, setCart] = useState([])
+
   useEffect(() => {
     const fetchData = async ()=> {
       try {
@@ -84,7 +84,7 @@ function App() {
                 </Link>
               </li>
             </ul>
-            {/* <Search setData={setData} /> */}
+            <Search setData={setData} />
           </div>
         </div>
       </nav>
