@@ -1,27 +1,29 @@
 import express from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 import cors from 'cors';
 
+process.loadEnvFile();
 
-dotenv.config();
+// dotenv.config();
 const url = process.env.MONGO_DB_URL;
 const dbName = process.env.MONGO_DB;
 const collectionName = process.env.MONGO_DB_COLLECTION;
+
+const client = await MongoClient.connect(url);
+const db = client.db(dbName);
+const collection = db.collection(collectionName);
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 
 
 app.get('/ducks', async(req, res)=> {
     try{
-        const client = await MongoClient.connect(url)
-        const db = client.db(dbName)
-        const collection = db.collection(collectionName)
         const ducks = await collection.find({}).toArray()
         res.json(ducks)
     } catch (err) {
@@ -32,9 +34,6 @@ app.get('/ducks', async(req, res)=> {
 
 app.get('/ducks/:id', async(req, res) => {
     try{
-        const client = await MongoClient.connect(url)
-        const db = client.db(dbName)
-        const collection = db.collection(collectionName)
         const duck = await collection.find({'duck_id': +req.params.id}).toArray()
         res.json(duck[0])
     } catch (err) {
@@ -45,10 +44,6 @@ app.get('/ducks/:id', async(req, res) => {
 
 app.post('/ducks/search', async (req, res) => {
     try {
-        const client = new MongoClient(url);
-        await client.connect();
-        const database = client.db(dbName);
-        const collection = database.collection(collectionName);
         const query = req.body;
         const result = await collection.find(query).toArray();
         res.json(result);
@@ -69,8 +64,12 @@ app.post('/ducks/login', async (req, res) => {
 })
 
 
-
-
 app.listen( PORT, () =>{
     console.log(`Server is running on ${PORT}`)
 })
+
+process.on('SIGINT', () => {
+    client.close();
+    console.log('Exiting gracefully')
+    process.exit(0);
+  });
