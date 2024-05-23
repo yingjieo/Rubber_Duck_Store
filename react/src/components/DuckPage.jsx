@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import duck_image from '../../../images/rubber_duck.png';
 
 function DuckPage(props) {
     const{data, addToCart} = props
@@ -13,7 +14,10 @@ function DuckPage(props) {
         style={{ flex: "1", minWidth: "300px", maxWidth: "45%" }}
     >
         <div className="card-body">
-            <h5 className="card-title">Duck Details</h5>
+            <section id='img'>
+                <img src={duck_image} />
+            </section>
+            <h5 className="card-title">{props.data?.name}</h5>
             <div className="card-text">Color: {props.data?.color}</div>
             <div className="card-text">Size: {props.data?.size} </div>
             
@@ -38,7 +42,7 @@ function DuckPage(props) {
         >
             Add to cart
         </button>
-        <Link className='nav-link' to={`/${data.duck_id}`}>
+        <Link to={`/${data.duck_id}`}>
         <button
             className="btn btn-sm btn-primary"
         > 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Recommendations from './Recommendations';
-import duck_image from '../../../images/duck.jpg';
+import duck_image from '../../../images/rubber_duck.png';
 
 const Duck = (props) => {
 
