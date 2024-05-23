@@ -7,7 +7,6 @@ function DuckPage(props) {
         addToCart(data.duck_id)
     }
   return(
-    <Link to={`/${data.duck_id}`}>
         <div
         className="card"
         style={{ flex: "1", minWidth: "300px", maxWidth: "45%" }}
@@ -48,9 +47,15 @@ function DuckPage(props) {
         >
             Add to cart
         </button>
+        <Link to={`/${data.duck_id}`}>
+        <button
+            className="btn btn-sm btn-primary"
+        > 
+            More Info
+        </button>
+        </Link>
         </div>
     </div>
-    </Link>
     );
 };
 

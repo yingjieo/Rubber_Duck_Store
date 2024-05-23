@@ -7,6 +7,7 @@ import Checkout  from './components/Checkout'
 import TestPage from './components/TestPage'
 import Home from './components/Home'
 import Duck from './components/Duck'
+import Login from './components/Login'
 import {BrowserRouter as Router, Route, Routes, Link} from "react-router-dom"
 
 function App() {
@@ -77,6 +78,11 @@ function App() {
                   Checkout
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
             </ul>
             {/* <Search setData={setData} /> */}
           </div>
@@ -96,8 +102,9 @@ function App() {
                   <Checkout />
                 
                 }/>
-                <Route path="/test" element={<TestPage data={data}/>} />
-                <Route path="/:id" element={<Duck />} />
+                <Route exact path="Login" element={ <Login /> } />
+                {/* <Route path="/test" element={<TestPage data={data}/>} /> */}
+                <Route path=":id" element={<Duck />} />
                 {/* <Route path="/Login" element={<LoginForm />} /> */}
               </Routes>
               

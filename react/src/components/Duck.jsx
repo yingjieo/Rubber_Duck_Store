@@ -37,10 +37,15 @@ const Duck = () => {
         };
 
         fetchData();
-    }, []);
+    }, [data]);
+
+    let stars = "⭐".repeat(data?.popularity);
 
     return (
         <>
+            <section id='img'>
+                <img src={'/images/duck.jpg'} />
+            </section>
             <section id='desc'>
                 {message()}
             </section>
@@ -55,8 +60,8 @@ const Duck = () => {
             </section>
             <h5>Additional Details</h5>
             <section>
-                <p>Durability: {data?.durability} </p>
-                <p>Popularity: {data?.popularity}/5</p>
+                <p>Durability: {data?.durability}/10 </p>
+                <p>Popularity: {stars}</p>
                 <p>Price: ${data?.price}</p>
             </section>
             <h5>Other Ducks</h5>

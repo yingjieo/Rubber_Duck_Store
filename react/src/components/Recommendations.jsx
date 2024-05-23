@@ -29,9 +29,9 @@ const Recommendations = (props) => {
                 }
 
                 const data = await response.json();
-                console.log(data);
+                // console.log(data);
                 setRecs(data);
-                // Extract all ducks from recs and display as a component
+
             } catch (error) {
                 console.error("Error posting data", error);
                 // Handle errors here
@@ -43,14 +43,15 @@ const Recommendations = (props) => {
 
     return (
         <>
-            {/* <p>Recommendations here!</p> */}
-            {
+            <div className="card-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+                {
                     recs.map((duck) => (
-                            <DuckPage key={duck.duck_id} data={duck} />
+                        <DuckPage key={duck.duck_id} data={duck} />
                     ))
-            }
+                }
+            </div>
         </>
-    )
+    );
 };
 
 export default Recommendations;

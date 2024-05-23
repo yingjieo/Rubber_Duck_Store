@@ -2,12 +2,15 @@ import csv
 import random
 from datetime import datetime, timedelta
 import json
+from faker import Faker
 
 # Generate data for duckies
 NUM_ROWS = 5000
 
 # Create the CSV file
 OUTPUT_FILE = "rubber_ducks.csv"
+
+fake = Faker()
 
 colors = ['Red', 'Blue', 'Green', 'Yellow', 'Orange', 'Purple', 'Black', 'White', 'Pink']
 special_colors = ['Multicolored', 'Gold', 'Silver']
@@ -96,6 +99,8 @@ for i in range(1, NUM_ROWS + 1):
     timestamp = datetime.now() - timedelta(seconds=i)
     duck_id = i
 
+    duck_name = fake.first_name()
+
     duck_color = random.choice(colors)
     # 20% chance to have a special color
     if (random.random() >= 0.8):
@@ -130,6 +135,7 @@ for i in range(1, NUM_ROWS + 1):
     data_row = [
         timestamp.strftime("%Y-%m-%d %H:%M:%S"),
         duck_id,
+        duck_name,
         duck_color,
         duck_size,
         duck_material,
@@ -148,7 +154,7 @@ for i in range(1, NUM_ROWS + 1):
 with open(OUTPUT_FILE, "w", newline="") as file:
     writer = csv.writer(file)
     writer.writerow(
-        ["timestamp", "duck_id", "color", "size", "material", "animal", "pattern", "theme", "durability", "popularity", "price"]
+        ["timestamp", "duck_id", "name", "color", "size", "material", "animal", "pattern", "theme", "durability", "popularity", "price"]
     )
     writer.writerows(data_rows)
 
