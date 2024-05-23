@@ -1,4 +1,6 @@
-import React, {Link, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom'
+import Checkout from './Checkout'
 
 
 function Cart({cart, setCart}) {
@@ -36,11 +38,11 @@ function Cart({cart, setCart}) {
         ))}
       </div>
       <div>Total Price: ${totalPrice}</div>
-      <button>
-        {/* <Link to='/checkout'>
-            Checkout
-        </Link> */}
-      </button>
+      
+            <Link to="/checkout">
+                  Checkout
+            </Link>
+      
       <button onClick={(clearCart)}>Clear Cart</button>
     </div>
   );
