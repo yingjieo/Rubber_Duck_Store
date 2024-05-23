@@ -26,7 +26,17 @@ function App() {
     }
     fetchData()
   },[])
+  //new code
+  const [cart, setCart] = useState()
+  const addToCart = (duck_id) => {
+    Cart.add(duck_id, 1)
+      .then(result => {
+        setCart(result.cart)
+        alert("Duck added to cart")
+      })
+  }
   
+  // end new code
   const handleDelete = async (duck_id) => {
      try{
       const response = await fetch(`http://localhost:3001/ducks/${duck_id}`, {
@@ -79,8 +89,8 @@ function App() {
           
             
               <Routes>
-                <Route exact path="/" element={<Home data ={data}/>} />
-                <Route exact path="Cart" element={<Cart data={data} handleDelete={handleDelete}/>}/>
+                <Route exact path="/" element={<Home data ={data} cart={cart} setCart={setCart} addToCart={addToCart}/>} />
+                <Route exact path="Cart" element={<Cart data={data} />}/>
                 <Route exact path="Checkout" element={
                 
                   <Checkout />

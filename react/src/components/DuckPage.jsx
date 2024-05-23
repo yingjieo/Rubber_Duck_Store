@@ -1,6 +1,10 @@
 import React from 'react'
 
 function DuckPage(props) {
+    const{data, addToCart} = props
+    const handleAddToCart = () => {
+        addToCart(data.duck_id)
+    }
   return(
         <div
         className="card"
@@ -38,9 +42,9 @@ function DuckPage(props) {
         
         <button
             className="btn btn-sm btn-danger"
-            onClick={() => addToCart(data._id)}
+            onClick={handleAddToCart}
         >
-            Buy
+            Add to cart
         </button>
         </div>
     </div>
