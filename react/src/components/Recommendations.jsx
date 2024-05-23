@@ -13,6 +13,9 @@ const Recommendations = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                if (!duck) {
+                    return;
+                }
                 const response = await fetch(url, {
                     method: "POST",
                     headers: {
@@ -36,7 +39,7 @@ const Recommendations = (props) => {
         };
 
         fetchData();
-    }, []);
+    }, [duck]);
 
     return (
         <>
