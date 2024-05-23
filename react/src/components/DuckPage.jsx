@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function DuckPage(props) {
     const{data, addToCart} = props
@@ -6,6 +7,7 @@ function DuckPage(props) {
         addToCart(data.duck_id)
     }
   return(
+    <Link to={`/${data.duck_id}`}>
         <div
         className="card"
         style={{ flex: "1", minWidth: "300px", maxWidth: "45%" }}
@@ -48,6 +50,7 @@ function DuckPage(props) {
         </button>
         </div>
     </div>
+    </Link>
     );
 };
 

@@ -31,6 +31,7 @@ def predict():
         data = [data]
     data = pd.DataFrame(data)
     data = data[['color', 'size', 'material', 'animal', 'pattern', 'theme', 'durability', 'popularity', 'price']]
+    # data = data.fillna('Unknown')
 
     # Do encoding first and then apply model
     data_encoded = model[0:-1].transform(data)
