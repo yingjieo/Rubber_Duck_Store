@@ -8,6 +8,7 @@ import Duck from './components/Duck'
 import Login from './components/Login'
 import Search from './components/Search'
 import {BrowserRouter as Router, Route, Routes, Link} from "react-router-dom"
+import logo from '../../images/logo.png'
 
 function App() {
   const [data, setData] = useState([])
@@ -57,7 +58,7 @@ function App() {
       <Router>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">Rubber Duck Store</a>
+          <img src = {logo} />
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -96,10 +97,10 @@ function App() {
             
               <Routes>
                 <Route exact path="/" element={<Home data ={data} cart={cart} setCart={setCart} addToCart={addToCart}/>} />
-                <Route exact path="/Cart" element={<Cart  cart={cart} />}/>
-                <Route exact path="Checkout" element={
+                <Route exact path="/Cart" element={<Cart  cart={cart} setCart={setCart}/>}/>
+                <Route exact path="Checkout" element={ 
                 
-                  <Checkout />
+                  <Checkout cart={cart} setCart={setCart}/>
                 
                 }/>
                 <Route exact path="Login" element={ <Login /> } />

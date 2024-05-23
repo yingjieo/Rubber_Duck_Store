@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {Link, useState, useEffect } from 'react';
 
 
 function Cart({cart, setCart}) {
@@ -6,7 +6,9 @@ function Cart({cart, setCart}) {
     const updatedCart = cart.filter(item => item !== itemToRemove)
     setCart(updatedCart)
   }
-
+  const clearCart = () => {
+    setCart([])
+  }
 
   const totalPrice = cart.reduce(
     (totalPrice, item) => totalPrice + item.price, 0
@@ -34,6 +36,12 @@ function Cart({cart, setCart}) {
         ))}
       </div>
       <div>Total Price: ${totalPrice}</div>
+      <button>
+        {/* <Link to='/checkout'>
+            Checkout
+        </Link> */}
+      </button>
+      <button onClick={(clearCart)}>Clear Cart</button>
     </div>
   );
 }
