@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 
-function Cart({cart}) {
-  
+function Cart({cart, setCart}) {
+  const removeFromCart = (itemToRemove) => {
+    const updatedCart = cart.filter(item => item !== itemToRemove)
+    setCart(updatedCart)
+  }
 
 
   const totalPrice = cart.reduce(
@@ -23,6 +26,7 @@ function Cart({cart}) {
             <div className="card-text">Pattern: {item.pattern}</div>
             <div className="card-text">Theme: {item.theme}</div>
             <div className="card-text">Price: ${item.price}</div>
+            <button onClick = {() => removeFromCart(item)}>Remove from Cart</button>
             
            
           </div>
