@@ -40,7 +40,7 @@ const Recommendations = (props) => {
 
     return (
         <>
-            <p>Recommendations here!</p>
+            {/* <p>Recommendations here!</p> */}
             {
                     recs.map((duck) => (
                             <DuckPage key={duck.duck_id} data={duck} />

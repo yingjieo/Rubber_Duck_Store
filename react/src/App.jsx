@@ -6,6 +6,7 @@ import Cart from './components/Cart'
 import Checkout  from './components/Checkout'
 import TestPage from './components/TestPage'
 import Home from './components/Home'
+import Duck from './components/Duck'
 import {BrowserRouter as Router, Route, Routes, Link} from "react-router-dom"
 
 function App() {
@@ -86,6 +87,7 @@ function App() {
                 
                 }/>
                 <Route path="/test" element={<TestPage data={data}/>} />
+                <Route path="/:id" element={<Duck />} />
                 {/* <Route path="/Login" element={<LoginForm />} /> */}
               </Routes>
               

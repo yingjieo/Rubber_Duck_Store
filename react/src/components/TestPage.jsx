@@ -2,8 +2,7 @@ import React from 'react';
 import Recommendations from './Recommendations'
 
 const TestPage = (props) => {
-    // const testDuck = props.data[0];
-    const testDuck = {"color":"Red",
+    const sampleDuck = {"color":"Red",
     "size":"Medium",
     "material":"Rubber",
     "animal":"Duck",
@@ -12,6 +11,9 @@ const TestPage = (props) => {
     "durability":6,
     "popularity":4,
     "price":3};
+
+    const testDuck = props?.data[0] || sampleDuck;
+    console.log(testDuck);
 
     return (
         <>
