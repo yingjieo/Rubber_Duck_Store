@@ -1,4 +1,5 @@
-import React, {Link} from "react";
+import React from "react";
+import {Link} from 'react-router-dom'
 
 const Checkout = ({cart, setCart}) => {
     const totalPrice = cart.reduce(
@@ -56,7 +57,7 @@ const Checkout = ({cart, setCart}) => {
                 type='text'
                 />
             <button onClick={(clearCart)} >
-                {/* <Link to='/Home'>Order</Link> */}
+                Order
                 </button>
         </>
     )

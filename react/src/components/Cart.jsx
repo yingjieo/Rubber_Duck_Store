@@ -38,11 +38,11 @@ function Cart({cart, setCart}) {
         ))}
       </div>
       <div>Total Price: ${totalPrice}</div>
-      
+      <button>
             <Link to="/checkout">
                   Checkout
             </Link>
-      
+            </button>
       <button onClick={(clearCart)}>Clear Cart</button>
     </div>
   );
