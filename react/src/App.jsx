@@ -12,6 +12,7 @@ import {BrowserRouter as Router, Route, Routes, Link} from "react-router-dom"
 
 function App() {
   const [data, setData] = useState([])
+  const [cart, setCart] = useState([])
   useEffect(() => {
     const fetchData = async ()=> {
       try {
@@ -28,13 +29,12 @@ function App() {
     fetchData()
   },[])
   //new code
-  const [cart, setCart] = useState()
-  const addToCart = (duck_id) => {
-    Cart.add(duck_id, 1)
-      .then(result => {
-        setCart(result.cart)
-        alert("Duck added to cart")
-      })
+  
+  const addToCart = (duck) => {
+    const updatedCart = [...cart, duck]
+    setCart(updatedCart)
+    alert("Duck added to cart")
+    console.log(duck)
   }
   
   // end new code
@@ -96,7 +96,7 @@ function App() {
             
               <Routes>
                 <Route exact path="/" element={<Home data ={data} cart={cart} setCart={setCart} addToCart={addToCart}/>} />
-                <Route exact path="Cart" element={<Cart data={data} />}/>
+                <Route exact path="/Cart" element={<Cart  cart={cart} />}/>
                 <Route exact path="Checkout" element={
                 
                   <Checkout />
