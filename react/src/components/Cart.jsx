@@ -1,31 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import CartContent from './CartContent';
-// import Cart from './Cart';
 
-function Cart(props) {
-  const [cart, setCart] = useState([]);
 
-  useEffect(() => {
-    // Retrieve cart data when the component mounts
-    retrieveCart();
-  }, []);
+function Cart({cart}) {
+  
 
-  const retrieveCart = async () => {
-    // Call the retrieve method of your CartContent to get the current cart data
-    const response = await CartContent.retrieve();
-    if (response.cart) {
-      setCart(response.cart);
-    }
-  };
 
-  const handleRemoveFromCart = async (duck_id) => {
-    // Call the remove method of your CartContent to remove the duck from the cart
-    const response = await CartContent.remove(duck_id);
-    if (response.cart) {
-      setCart(response.cart);
-    }
-  };
-
+  const totalPrice = cart.reduce(
+    (totalPrice, item) => totalPrice + item.price, 0
+  )
   return (
     <div className="container cart">
       <h2>Cart</h2>
@@ -42,7 +24,7 @@ function Cart(props) {
             <div className="card-text">Theme: {item.theme}</div>
             <div className="card-text">Price: ${item.price}</div>
             
-            {/* <button onClick={() => handleRemoveFromCart(item.duck_id)}>Remove</button> */}
+           
           </div>
           
         ))}
