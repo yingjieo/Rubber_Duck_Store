@@ -26,10 +26,10 @@ const Home = (props) => {
             </div>
             <div style={{ textAlign: 'center'}}>
                 {currentPage > 1 && (
-                    <button onClick={prevPage}>Previous</button>
+                    <button className="btn btn-dark" onClick={prevPage}>Previous</button>
                 )}
                 {indexOfLastDuck< props.data.length && (
-                    <button onClick={nextPage}>Next</button>
+                    <button className="btn btn-dark" onClick={nextPage}>Next</button>
                 )}
             </div>
         </>
