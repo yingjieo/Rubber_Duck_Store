@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Recommendations from './Recommendations'
+import Recommendations from './Recommendations';
+import duck_image from '../../../images/duck.jpg';
 
-
-const Duck = () => {
+const Duck = (props) => {
 
     function message() {
         const animals = ['Dinosaur', 'Phoenix', 'Dragon']
@@ -37,15 +37,16 @@ const Duck = () => {
         };
 
         fetchData();
-    }, []);
+    }, [data]);
 
     let stars = "⭐".repeat(data?.popularity);
 
     return (
         <>
             <section id='img'>
-                <img src={'/images/duck.jpg'} />
+                <img src={duck_image} />
             </section>
+            <h5>{data?.name}</h5>
             <section id='desc'>
                 {message()}
             </section>
@@ -66,7 +67,7 @@ const Duck = () => {
             </section>
             <h5>Other Ducks</h5>
             <section>
-                <Recommendations data={data} />
+                <Recommendations data={data} addToCart={props.addToCart}/>
             </section>
         </>
     )

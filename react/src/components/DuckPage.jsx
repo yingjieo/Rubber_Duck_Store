@@ -48,7 +48,7 @@ function DuckPage(props) {
         >
             Add to cart
         </button>
-        <Link to={`/${data.duck_id}`}>
+        <Link className='nav-link' to={`/${data.duck_id}`}>
         <button
             className="btn btn-sm btn-primary"
         > 

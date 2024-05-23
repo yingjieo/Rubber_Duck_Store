@@ -46,7 +46,7 @@ const Recommendations = (props) => {
             <div className="card-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
                 {
                     recs.map((duck) => (
-                        <DuckPage key={duck.duck_id} data={duck} />
+                        <DuckPage key={duck.duck_id} data={duck} addToCart={props.addToCart}/>
                     ))
                 }
             </div>

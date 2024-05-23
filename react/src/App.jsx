@@ -104,7 +104,7 @@ function App() {
                 }/>
                 <Route exact path="Login" element={ <Login /> } />
                 {/* <Route path="/test" element={<TestPage data={data}/>} /> */}
-                <Route path=":id" element={<Duck />} />
+                <Route path=":id" element={<Duck cart={cart} setCart={setCart} addToCart={addToCart} />} />
                 {/* <Route path="/Login" element={<LoginForm />} /> */}
               </Routes>
               
