@@ -1,10 +1,12 @@
 import React from 'react'
+import Home from './Home'
 
 function DuckPage(props) {
     const{data, addToCart} = props
     const handleAddToCart = () => {
-        addToCart(data.duck_id)
+        addToCart(data)
     }
+    
   return(
         <div
         className="card"

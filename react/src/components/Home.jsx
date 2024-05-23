@@ -20,7 +20,7 @@ const Home = (props) => {
             <div className="card-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
                 {
                     currentDucks.map((ducks) => (
-                        <DuckPage key={ducks._id} data={ducks} />
+                        <DuckPage key={ducks._id} data={ducks}  addToCart={props.addToCart}/>
                     ))
                 }
             </div>
