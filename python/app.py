@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS, cross_origin
 import pickle
 import pandas as pd
-from pymongo import MongoClient
+# from pymongo import MongoClient
 import os
 
 K = 9

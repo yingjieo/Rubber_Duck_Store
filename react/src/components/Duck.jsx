@@ -37,7 +37,7 @@ const Duck = () => {
         };
 
         fetchData();
-    }, [data]);
+    }, []);
 
     let stars = "⭐".repeat(data?.popularity);
 
