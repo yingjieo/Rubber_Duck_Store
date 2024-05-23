@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom'
+import Checkout from './Checkout'
 
 
-function Cart({cart}) {
-  
-
+function Cart({cart, setCart}) {
+  const removeFromCart = (itemToRemove) => {
+    const updatedCart = cart.filter(item => item !== itemToRemove)
+    setCart(updatedCart)
+  }
+  const clearCart = () => {
+    setCart([])
+  }
 
   const totalPrice = cart.reduce(
     (totalPrice, item) => totalPrice + item.price, 0
@@ -23,6 +30,7 @@ function Cart({cart}) {
             <div className="card-text">Pattern: {item.pattern}</div>
             <div className="card-text">Theme: {item.theme}</div>
             <div className="card-text">Price: ${item.price}</div>
+            <button onClick = {() => removeFromCart(item)}>Remove from Cart</button>
             
            
           </div>
@@ -30,6 +38,12 @@ function Cart({cart}) {
         ))}
       </div>
       <div>Total Price: ${totalPrice}</div>
+      
+            <Link to="/checkout">
+                  Checkout
+            </Link>
+      
+      <button onClick={(clearCart)}>Clear Cart</button>
     </div>
   );
 }
