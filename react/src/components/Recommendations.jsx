@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import DuckPage from './DuckPage'
 
 
 // The input to Recommendations should be the duck that the component should get recs for
-const Recommendations = async (props) => {
+const Recommendations = (props) => {
 
     const url = "http://127.0.0.1:5000/api/predict";
 
     const [recs, setRecs] = useState([]);
 
     const duck = props.data;
-
+    useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch(url, {
@@ -35,10 +36,16 @@ const Recommendations = async (props) => {
         };
 
         fetchData();
+    }, []);
 
     return (
         <>
             <p>Recommendations here!</p>
+            {
+                    recs.map((duck) => (
+                            <DuckPage key={duck.duck_id} data={duck} />
+                    ))
+            }
         </>
     )
 };
