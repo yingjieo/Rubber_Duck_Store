@@ -47,51 +47,63 @@ export const Register = () => {
 
     return (
         <section className='Register'>
-            <h1>Register</h1>
-            <form onSubmit={handleFormSubmit}>
-                <div className="box">
-                    <label>Username</label>
-                    <input
-                        name="username"
-                        value={state.username}
-                        onChange={handleChange}
-                    />
-                    <label>Email</label>
-                    <input
-                        name="email"
-                        value={state.email}
-                        onChange={handleChange}
-                    />
-                    <label>Password</label>
-                    <input
-                        name="password"
-                        type="password"
-                        value={state.password}
-                        onChange={handleChange}
-                    />
-                    <label>Verify Password</label>
-                    <input
-                        name="verifyPassword"
-                        type="password"
-                        value={state.verifyPassword}
-                        onChange={(e) => {
-                            handleChange(e);
-                            validatePassword(e.target.value);
-                        }}
-                    />
+            <div className="container">
+                <h1 className="mb-4">Register</h1>
+                <form onSubmit={handleFormSubmit}>
+                    <div className="form-group">
+                        <label>Username</label>
+                        <input
+                            className="form-control"
+                            name="username"
+                            value={state.username}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input
+                            className="form-control"
+                            name="email"
+                            value={state.email}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input
+                            className="form-control"
+                            name="password"
+                            type="password"
+                            value={state.password}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Verify Password</label>
+                        <input
+                            className="form-control"
+                            name="verifyPassword"
+                            type="password"
+                            value={state.verifyPassword}
+                            onChange={(e) => {
+                                handleChange(e);
+                                validatePassword(e.target.value);
+                            }}
+                        />
+                    </div>
                     <button type="submit" className="btn btn-primary">Register</button>
-                </div>
-            </form>
-            {/* Error message */}
-            {errorMessage && (
-                <div className="alert alert-danger mt-3" role="alert">
-                    <FontAwesomeIcon icon={faExclamationCircle} className="mr-2" />
-                    {errorMessage}
-                    <button type="button" className="close" onClick={() => setErrorMessage('')}>
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            )}
+                </form>
+                {/* Error message */}
+                {errorMessage && (
+                    <div className="alert alert-danger mt-3" role="alert">
+                        <FontAwesomeIcon icon={faExclamationCircle} className="mr-2" />
+                        {errorMessage}
+                        <button type="button" className="close" onClick={() => setErrorMessage('')}>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                )}
+            </div>
         </section>
     );
 };
