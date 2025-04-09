@@ -1,14 +1,17 @@
 import express from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
-// import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import cors from 'cors';
 
-process.loadEnvFile();
+// process.loadEnvFile();
 
-// dotenv.config();
-const url = process.env.MONGO_DB_URL;
-const dbName = process.env.MONGO_DB;
-const collectionName = process.env.MONGO_DB_COLLECTION;
+dotenv.config();
+// const url = process.env.MONGO_DB_URL;
+// const dbName = process.env.MONGO_DB;
+// const collectionName = process.env.MONGO_DB_COLLECTION;
+const url="mongodb://localhost:27017/"
+const dbName="the-duck-store"
+const collectionName="ducks"
 
 const client = await MongoClient.connect(url);
 const db = client.db(dbName);
